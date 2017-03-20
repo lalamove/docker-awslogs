@@ -1,0 +1,8 @@
+version: '2'
+services:
+  test-awslogs:
+    container_name: test-awslogs
+    hostname: test-awslogs
+    build: .
+    environment:
+      - "AWSLOGS=mobile-api-php-nginx-error.log:/data/prod-micro-service/mobile-api-php/logs/error.log:prod-php:mobile-api-php--nginx-error--{instance_id}.log,mobile-api-php.log:/data/prod-micro-service/mobile-api-php/logs/laravel*.log:prod-php:mobile-api-php--laravel--{instance_id}.log,CodeDeploy-agent.log:/opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log:CodeDeploy:deploy-agent--{instance_id}--codedeploy-agent.log"
