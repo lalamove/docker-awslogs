@@ -9,6 +9,7 @@ ADD https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup
 
 COPY awslogs.conf.dummy /awslogs.conf.dummy
 COPY entry.sh /entry.sh
+RUN mkdir /conf.d # for adding config files here
 
 RUN python /awslogs-agent-setup.py -n -r ap-southeast-1 -c /awslogs.conf.dummy
 

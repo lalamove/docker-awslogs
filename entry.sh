@@ -18,6 +18,12 @@ then
 state_file = /var/awslogs/state/agent-state
 
 EOF
+    for file in /conf.d/*
+    do
+        cat "$file" >> /awslogs.conf
+        echo "" >> /awslogs.conf
+    done
+
     IFS=$','
     for config in $AWSLOGS
     do
