@@ -8,16 +8,16 @@ shutdown_awslogs()
 }
 trap shutdown_awslogs INT TERM HUP
 
-if [ "$AWSLOGS" != "" ]
-then
-
-    cat <<EOF > /awslogs.conf
+cat <<EOF > /awslogs.conf
 [general]
 # Path to the CloudWatch Logs agent's state file. The agent uses this file to maintain
 # client side state across its executions.
 state_file = /var/awslogs/state/agent-state
 
 EOF
+
+if [ "$AWSLOGS" != "" ]
+then
     for file in /conf.d/*
     do
         cat "$file" >> /awslogs.conf
